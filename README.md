@@ -28,6 +28,23 @@ python -m pip install -r requirements.txt
 ./scripts/git_remote_setup.sh <remote_url> [branch_name]
 ```
 
+## Seguridad de secretos
+1. Crear `.env` local y proteger permisos:
+```bash
+cp .env.example .env
+chmod 600 .env
+```
+2. Activar hook local anti-secretos:
+```bash
+./scripts/setup_hooks.sh
+```
+3. Escaneo manual:
+```bash
+python3 scripts/scan_secrets.py
+```
+
+Guia detallada: `docs/secrets_management.md`
+
 ## Ejecutar pipeline de cotizacion
 ```bash
 source .venv/bin/activate
@@ -37,3 +54,9 @@ python scripts/run_quote_pipeline.py --workbook ../artifacts/workbooks/Staff_Quo
 Opciones:
 - `--run-recalc`: ejecuta recalc LibreOffice antes de validar formulas.
 - `--allow-formula-issues`: no falla el pipeline si se detectan issues.
+
+## Primer sync a Google Sheets
+```bash
+source .venv/bin/activate
+python scripts/sync_csv_to_gsheet.py --csv-dir ../artifacts/rebuild_template_csv
+```

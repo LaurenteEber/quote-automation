@@ -6,6 +6,8 @@ import csv
 from pathlib import Path
 import sys
 
+from dotenv import load_dotenv
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = REPO_ROOT / "src"
 if str(SRC_ROOT) not in sys.path:
@@ -32,8 +34,14 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> int:
+    load_dotenv()
     args = parse_args()
     settings = get_settings()
+
+    if not settings.google_sheets_id:
+        raise ValueError("GOOGLE_SHEETS_ID is not set. Use .env or environment variables.")
+    if not settings.google_credentials_file:
+        raise ValueError("GOOGLE_CREDENTIALS_FILE is not set. Use .env or environment variables.")
 
     gateway = GoogleSheetsGateway(
         spreadsheet_id=settings.google_sheets_id,

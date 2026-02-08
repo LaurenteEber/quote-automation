@@ -21,6 +21,16 @@ htmlcov/
 
 # Local secrets
 .env
+.env.*
+!.env.example
+.secrets/
+secrets/
+*.pem
+*.p12
+*.pfx
+*.key
+*service-account*.json
+*credentials*.json
 
 # Build
 build/

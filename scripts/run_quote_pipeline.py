@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 import sys
 
+from dotenv import load_dotenv
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = REPO_ROOT / "src"
 if str(SRC_ROOT) not in sys.path:
@@ -37,6 +39,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> int:
+    load_dotenv()
     args = parse_args()
     workbook_path = Path(args.workbook).expanduser().resolve()
 

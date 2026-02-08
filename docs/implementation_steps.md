@@ -13,7 +13,10 @@ Uso:
 ./scripts/git_remote_setup.sh <remote_url> [branch_name]
 ```
 
-Nota: falta ejecutar porque se requiere URL del remoto.
+Estado actual:
+- remoto `origin` configurado
+- branch `main` creado en GitHub
+- branch de trabajo `codex/bootstrap` publicada
 
 ## 2) Integracion Google Sheets (base)
 Se agrego modulo reusable:
@@ -38,6 +41,13 @@ python scripts/sync_csv_to_gsheet.py --csv-dir ../artifacts/rebuild_template_csv
 ```
 
 Requiere `.env` con `GOOGLE_CREDENTIALS_FILE` y `GOOGLE_SHEETS_ID`.
+
+Hardening de secretos:
+- `.gitignore` reforzado para credenciales
+- hook `.githooks/pre-commit` con escaneo de secretos
+- script `scripts/scan_secrets.py`
+- script `scripts/set_github_secrets.sh`
+- guia: `docs/secrets_management.md`
 
 ## 3) Pipeline validacion + JSON + PDF
 Se agrego pipeline:
@@ -73,4 +83,3 @@ Salida esperada:
 ```bash
 python scripts/run_quote_pipeline.py --workbook ../artifacts/workbooks/Staff_Quoter_Rebuild_Foundation_v1.xlsx --run-recalc
 ```
-
