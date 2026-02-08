@@ -1,0 +1,1 @@
+"""Staff Quoter internal package."""

@@ -1,0 +1,15 @@
+openpyxl
+pandas
+numpy
+python-dotenv
+gspread
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client
+pydantic
+pyyaml
+rich
+reportlab
+pdfplumber
+pypdf

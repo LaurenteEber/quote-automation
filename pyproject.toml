@@ -1,0 +1,17 @@
+[project]
+name = "staff-quoter-internal"
+version = "0.1.0"
+description = "Internal development workspace for Staff Quoter automation"
+readme = "README.md"
+requires-python = ">=3.11"
+
+authors = [
+  { name = "TechNision" }
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q"
